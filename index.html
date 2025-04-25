@@ -136,6 +136,28 @@
             .container { padding: 1rem; }
             .section h2 { font-size: 1.5rem; }
         }
+        .tableau-section {
+  margin: 40px 0;
+}
+.tableau-section h2 {
+  font-size: 24px;
+  color: #444;
+  margin-bottom: 20px;
+}
+.tableau-responsive {
+  position: relative;
+  padding-bottom: 75%; /* יחס גובה-רוחב */
+  height: 0;
+  overflow: hidden;
+}
+.tableau-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
     </style>
 </head>
 <body>
@@ -225,5 +247,11 @@
 
         sections.forEach(section => observer.observe(section));
     </script>
+    <div class="tableau-section">
+  <h2>Tableau Data Visualizations</h2>
+  <div class="tableau-responsive">
+    <iframe src="https://public.tableau.com/views/chocolatefinal/sheet1?:language=en-US&:display_count=n&:origin=viz_share_link" frameborder="0"></iframe>
+  </div>
+</div>
 </body>
 </html>
