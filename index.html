@@ -13,10 +13,9 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ff9a8b, #ff6a88, #d99eff);
-            color: #333;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
             line-height: 1.6;
-            padding-top: 80px;
         }
 
         /* Header Styles */
@@ -36,6 +35,8 @@
             background: linear-gradient(to right, #ff6b6b, #ff8e53);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
         }
 
         nav {
@@ -52,51 +53,46 @@
 
         nav a:hover {
             color: #ff6b6b;
-            text-decoration: underline;
+            transform: scale(1.1);
         }
 
         /* Main Content */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 120px auto 20px;
             padding: 2rem;
         }
 
         .section {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             padding: 2rem;
             margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             animation: fadeIn 1s ease-in-out;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .section h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #00c6ff, #0072ff);
+            background: linear-gradient(to right, #4facfe, #00f2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-align: center;
         }
 
-        .section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
+        /* Tableau Embed */
         .tableau-container {
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
             margin: 2rem 0;
             animation: scaleIn 0.8s ease-in-out;
         }
 
         .tableau-container::before {
-            content: "🔍 Interactive Analytics";
+            content: "📊 Interactive Analytics";
             position: absolute;
             top: 10px;
             left: 10px;
@@ -104,23 +100,22 @@
             color: #fff;
             padding: 5px 10px;
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             position: relative;
             bottom: 0;
             width: 100%;
-            color: #fff;
-            font-size: 1rem;
         }
 
         footer p {
-            margin: 0;
+            font-size: 1.1rem;
+            color: #fff;
         }
 
         /* Animations */
@@ -139,13 +134,35 @@
             to { transform: scale(1); opacity: 1; }
         }
 
+        /* Layout for multiple visualizations */
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .col {
+            width: 48%;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
             nav a { margin: 0 0.5rem; font-size: 1rem; }
             .container { padding: 1rem; }
             .section h2 { font-size: 1.8rem; }
-            .section p { font-size: 1rem; }
+            .row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .col {
+                width: 100%;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -169,27 +186,19 @@
         <div class="section" id="dashboards">
             <h2>Interactive Dashboards 📉</h2>
             <p>Our Tableau dashboards provide real-time insights into your data. Interact with the visualizations below to explore trends and patterns! 🔎</p>
-            <div class="tableau-container">
-                <!-- Tableau Embed Code -->
-                <div id="tableauViz"></div>
-                <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
-                <script>
-                    function initViz() {
-                        const containerDiv = document.getElementById("tableauViz");
-                        const vizUrl = "https://public.tableau.com/views/chocolatefinal/Dashboard1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link"; // Updated Tableau URL
-                        const options = {
-                            width: "100%",
-                            height: "600px",
-                            hideTabs: true,
-                            hideToolbar: true,
-                            onFirstInteractive: function () {
-                                console.log("Tableau dashboard loaded! 📊");
-                            }
-                        };
-                        new tableau.Viz(containerDiv, vizUrl, options);
-                    }
-                    window.onload = initViz;
-                </script>
+            
+            <!-- Layout for two visualizations on top and one below -->
+            <div class="row">
+                <div class="col">
+                    <div class="tableau-container" id="tableauViz1"></div>
+                </div>
+                <div class="col">
+                    <div class="tableau-container" id="tableauViz2"></div>
+                </div>
+            </div>
+
+            <div class="full-width">
+                <div class="tableau-container" id="tableauViz3"></div>
             </div>
         </div>
 
@@ -214,27 +223,36 @@
         <p>&copy; 2025 Data Analytics Hub. All rights reserved. Made with 💖</p>
     </footer>
 
+    <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
     <script>
-        // Smooth Scroll for Navigation
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const sectionId = this.getAttribute('href').substring(1);
-                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // Add Scroll Animation Trigger
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeIn 1s ease-in-out';
+        function initViz() {
+            const options = {
+                width: "100%",
+                height: "600px",
+                hideTabs: true,
+                hideToolbar: true,
+                onFirstInteractive: function () {
+                    console.log("Tableau dashboard loaded! 📊");
                 }
-            });
-        }, { threshold: 0.1 });
+            };
 
-        sections.forEach(section => observer.observe(section));
+            // First Graph
+            const containerDiv1 = document.getElementById("tableauViz1");
+            const vizUrl1 = "https://public.tableau.com/views/chocolatefinal/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link";
+            new tableau.Viz(containerDiv1, vizUrl1, options);
+
+            // Second Graph
+            const containerDiv2 = document.getElementById("tableauViz2");
+            const vizUrl2 = "https://public.tableau.com/views/chocolatefinal/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link";
+            new tableau.Viz(containerDiv2, vizUrl2, options);
+
+            // Full-Width Graph
+            const containerDiv3 = document.getElementById("tableauViz3");
+            const vizUrl3 = "https://public.tableau.com/views/chocolatefinal/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link";
+            new tableau.Viz(containerDiv3, vizUrl3, options);
+        }
+
+        window.onload = initViz;
     </script>
 </body>
 </html>
