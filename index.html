@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,10 +13,9 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ff9a8b, #ff6a88, #d99eff);
-            color: #333;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: #fff;
             line-height: 1.6;
-            padding-top: 80px;
         }
 
         /* Header Styles */
@@ -32,7 +31,7 @@
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             background: linear-gradient(to right, #ff6b6b, #ff8e53);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -46,51 +45,44 @@
             color: #fff;
             text-decoration: none;
             margin: 0 1.5rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: color 0.3s;
         }
 
         nav a:hover {
             color: #ff6b6b;
-            text-decoration: underline;
         }
 
         /* Main Content */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 100px auto 20px;
             padding: 2rem;
         }
 
         .section {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             padding: 2rem;
             margin-bottom: 2rem;
             backdrop-filter: blur(10px);
             animation: fadeIn 1s ease-in-out;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .section h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #00c6ff, #0072ff);
+            background: linear-gradient(to right, #4facfe, #00f2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-align: center;
         }
 
-        .section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
+        /* Tableau Embed */
         .tableau-container {
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             margin: 2rem 0;
             animation: scaleIn 0.8s ease-in-out;
         }
@@ -110,17 +102,15 @@
         /* Footer */
         footer {
             text-align: center;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.7);
             position: relative;
             bottom: 0;
             width: 100%;
-            color: #fff;
-            font-size: 1rem;
         }
 
         footer p {
-            margin: 0;
+            font-size: 1rem;
         }
 
         /* Animations */
@@ -144,8 +134,7 @@
             header h1 { font-size: 2rem; }
             nav a { margin: 0 0.5rem; font-size: 1rem; }
             .container { padding: 1rem; }
-            .section h2 { font-size: 1.8rem; }
-            .section p { font-size: 1rem; }
+            .section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -176,7 +165,7 @@
                 <script>
                     function initViz() {
                         const containerDiv = document.getElementById("tableauViz");
-                        const vizUrl = "https://public.tableau.com/views/chocolatefinal/sheet1"; // Updated Tableau URL
+                        const vizUrl = "https://public.tableau.com/views/chocolatefinal/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"; // URL של הדשבורד
                         const options = {
                             width: "100%",
                             height: "600px",
