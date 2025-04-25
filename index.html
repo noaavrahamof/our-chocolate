@@ -136,44 +136,6 @@
             .container { padding: 1rem; }
             .section h2 { font-size: 1.5rem; }
         }
-  body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    .tableau-section {
-      margin: 40px 0;
-    }
-    .tableau-section h2 {
-      font-size: 24px;
-      color: #444;
-      margin-bottom: 20px;
-    }
-    .tableau-responsive {
-      position: relative;
-      padding-bottom: 75%; /* Adjust aspect ratio (height/width) */
-      height: 0;
-      overflow: hidden;
-    }
-    .tableau-responsive iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    const vizUrl = "https://public.tableau.com/views/chocolatefinal/sheet1";
-
     </style>
 </head>
 <body>
@@ -197,13 +159,13 @@
             <h2>Interactive Dashboards 📉</h2>
             <p>Our Tableau dashboards provide real-time insights into your data. Interact with the visualizations below to explore trends and patterns! 🔎</p>
             <div class="tableau-container">
-                <!-- Replace with your Tableau Public embed code -->
+                <!-- Tableau Embed Code -->
                 <div id="tableauViz"></div>
                 <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
                 <script>
                     function initViz() {
                         const containerDiv = document.getElementById("tableauViz");
-                        const vizUrl = "https://public.tableau.com/views/YOUR_TABLEAU_VISUALIZATION_URL"; // Replace with your Tableau Public URL
+                        const vizUrl = "https://public.tableau.com/views/chocolatefinal/sheet1"; // Updated Tableau URL
                         const options = {
                             width: "100%",
                             height: "600px",
@@ -221,7 +183,7 @@
         </div>
 
         <div class="section" id="insights">
-            <h2>Key Insights 🔍EMOJI</h2>
+            <h2>Key Insights 🔍</h2>
             <p>Discover actionable insights from our data analytics:
                 <ul>
                     <li>📈 Sales trends show a 20% increase year-over-year.</li>
@@ -263,16 +225,5 @@
 
         sections.forEach(section => observer.observe(section));
     </script>
-  <div class="container">
-    <h1>Our Chocolate</h1>
-    <!-- Existing content of the website can go here -->
-    
-    <div class="tableau-section">
-      <h2>Tableau Data Visualizations</h2>
-      <div class="tableau-responsive">
-        <iframe src="https://public.tableau.com/views/chocolatefinal/sheet1?:language=en-US&:display_count=n&:origin=viz_share_link" frameborder="0"></iframe>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
